@@ -13,7 +13,7 @@ module MundiApi
     def initialize(timeout: nil, cache: false,
                    max_retries: nil, retry_interval: nil)
       @connection = Faraday.new do |faraday|
-        faraday.use Faraday::HttpCache, serializer: Marshal if cache
+        # faraday.use Faraday::HttpCache, serializer: Marshal if cache
         faraday.use FaradayMiddleware::FollowRedirects
         faraday.request :multipart
         faraday.request :url_encoded
